@@ -15,22 +15,21 @@
 <body>
 <form name="form_Login" action="<c:url value="/login"/>" method="post" class="box login">
     <fieldset class="boxBody">
-        <label>User:</label>
-        <input type="text" name="user_Login" title="Enter User">
-
-        <label>Password:</label>
-        <input type="password" name="password_Login" title="Enter Password">
-
-        <input type="checkbox" name="remember-me" class="checkAdmin" title="Remember me" id="rememberMe">
+        <label>Username:
+            <input type='text' name='user_login' value=''>
+        </label>
+        <label>Password:
+            <input type='password' name='password_login'/>
+        </label>
+        <c:if test="${not empty error}">
+            <div class="error" style="text-align:right;">${error}</div>
+        </c:if>
     </fieldset>
 
     <footer>
-        <%--<label for="rememberMe">Remember me</label>--%>
-
-        <input type="submit" name="submit" value="submit" class="btnLogin">
-        <c:if test="${not empty error}">
-            <span class="error">${error}</span>
-        </c:if>
+        <input name="remember-me" type="checkbox" class="checkAdmin" id="remember_me"/>
+        <label for="remember_me">Remember me</label>
+        <input type="submit" class="btnLogin" value="Submit">
     </footer>
 
 </form>
