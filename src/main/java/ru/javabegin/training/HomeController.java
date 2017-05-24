@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.security.Principal;
 import java.util.Locale;
 
 /**
@@ -19,9 +20,15 @@ public class HomeController {
 
     private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-    /**
-     * Simply selects the home view to render by returning its name.
-     */
+
+    @RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
+    public ModelAndView accessDenied(Principal user) {
+        ModelAndView model = new ModelAndView()
+                .addObject("errorMsg", String.format("%s You have not access this page", user != null ? user.getName() : ""));
+        model.setViewName("content/accessDenied");
+        return model;
+    }
+
     @RequestMapping(value = {"/", "/mainlogin"}, method = RequestMethod.GET)
     public ModelAndView mainlogin(@RequestParam(value = "error", required = false) String error, Locale locale) {
         logger.info("Welcome! The client locale is {}.", locale);
