@@ -9,26 +9,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link href="<c:url value="/resources/css/home.css"/>" rel="stylesheet"/>
     <title>Login page</title>
 </head>
 <body>
-<c:if test="${not empty error}">
-    ${error}
-</c:if>
-<form name="form_Login" action="<c:url value="/login"/>" method="post">
-    <table>
-        <tr>
-            <td>User:</td>
-            <td><input type="text" name="user_Login" value="" title="Enter User"></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type="password" name="password_Login" value="" title="Enter Password"></td>
-        </tr>
-        <tr>
-            <td><input type="submit" name="submit" value="submit"></td>
-        </tr>
-    </table>
+<form name="form_Login" action="<c:url value="/login"/>" method="post" class="box login">
+    <fieldset class="boxBody">
+        <label>User:</label>
+        <input type="text" name="user_Login" title="Enter User">
+
+        <label>Password:</label>
+        <input type="password" name="password_Login" title="Enter Password">
+
+    </fieldset>
+
+    <footer>
+        <input type="submit" name="submit" value="submit" class="btnLogin">
+        <c:if test="${not empty error}">
+            <span class="error">${error}</span>
+        </c:if>
+    </footer>
+
 </form>
 </body>
 </html>
