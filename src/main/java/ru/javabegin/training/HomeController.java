@@ -2,6 +2,8 @@ package ru.javabegin.training;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,8 +43,16 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/user", method = RequestMethod.GET)
+
     public String mainPage() {
+        printUserDetails();
         return "content/user";
+    }
+
+    private void printUserDetails() {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        logger.info("user:" + userDetails.getUsername());
+        logger.info("pass:" + userDetails.getPassword());
     }
 
     @RequestMapping(value = "/admin", method = RequestMethod.GET)

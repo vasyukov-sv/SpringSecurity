@@ -21,9 +21,12 @@
         <label>Password:</label>
         <input type="password" name="password_Login" title="Enter Password">
 
+        <input type="checkbox" name="remember-me" class="checkAdmin" title="Remember me" id="rememberMe">
     </fieldset>
 
     <footer>
+        <%--<label for="rememberMe">Remember me</label>--%>
+
         <input type="submit" name="submit" value="submit" class="btnLogin">
         <c:if test="${not empty error}">
             <span class="error">${error}</span>

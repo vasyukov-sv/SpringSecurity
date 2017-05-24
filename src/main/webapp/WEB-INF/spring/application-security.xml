@@ -10,6 +10,7 @@
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
     <http use-expressions="true">
+        <remember-me remember-me-cookie="remember-me"/>
         <csrf disabled="true"/>
         <access-denied-handler error-page="/accessDenied"/>
         <intercept-url pattern="/user" access="hasRole('ROLE_USER')"/>
@@ -22,18 +23,16 @@
                 username-parameter="user_Login"
                 password-parameter="password_Login"
         />
-
         <logout logout-success-url="/mainlogin"/>
     </http>
 
     <authentication-manager>
         <authentication-provider>
-            <user-service>
-                <user name="admin" password="admin" authorities="ROLE_ADMIN"/>
-                <user name="user" password="user" authorities="ROLE_USER"/>
-            </user-service>
+            <!--<user-service>-->
+                <!--<user name="admin" password="admin" authorities="ROLE_ADMIN"/>-->
+                <!--<user name="user" password="user" authorities="ROLE_USER"/>-->
+            <!--</user-service>-->
+            <jdbc-user-service data-source-ref="dataSource"/>
         </authentication-provider>
     </authentication-manager>
-
-
 </beans:beans>
