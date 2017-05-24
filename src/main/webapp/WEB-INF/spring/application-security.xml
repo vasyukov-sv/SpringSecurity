@@ -10,7 +10,6 @@
 	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
     <http use-expressions="true">
-        <remember-me remember-me-cookie="remember-me"/>
         <csrf disabled="true"/>
         <access-denied-handler error-page="/accessDenied"/>
         <intercept-url pattern="/user" access="hasRole('ROLE_USER')"/>
@@ -20,10 +19,14 @@
                 login-page="/mainlogin"
                 default-target-url="/user"
                 authentication-failure-url="/mainlogin?error=true"
-                username-parameter="user_Login"
-                password-parameter="password_Login"
+                username-parameter="user_login"
+                password-parameter="password_login"
         />
         <logout logout-success-url="/mainlogin"/>
+        <remember-me
+                token-validity-seconds="1209600"
+                remember-me-parameter="remember-me"
+                data-source-ref="dataSource" />
     </http>
 
     <authentication-manager>
