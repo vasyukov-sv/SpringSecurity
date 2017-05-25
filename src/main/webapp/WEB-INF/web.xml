@@ -29,6 +29,18 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+    <!--SSL on-->
+    <security-constraint>
+        <display-name>ssl</display-name>
+        <web-resource-collection>
+            <web-resource-name>all-pages</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
     <!--Spring security filter-->
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>

@@ -114,7 +114,7 @@ UNLOCK TABLES;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `username` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `password` varchar(60) NOT NULL,
   `enabled` tinyint(4) NOT NULL DEFAULT '1',
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -126,6 +126,9 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('admin','admin',1),('user','user',1);
+INSERT INTO users (username, password, enabled) VALUES ('admin', '$2a$06$QPKCgIP2ErelUPFysDWvnuNDx6nvIzPqL3HXaOEXVa28Mp4v5h4YW', 1);
+INSERT INTO users (username, password, enabled) VALUES ('user', '$2a$06$PVja6nbvPuOvZBE5meGlTuJ4DaYQhaxhrgKlKzYwngn2eHAiIlaCq', 1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+

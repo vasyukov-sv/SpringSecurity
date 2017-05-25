@@ -31,6 +31,7 @@
 
     <authentication-manager>
         <authentication-provider user-service-ref="jdbcGroupImpl">
+            <password-encoder ref="bcrypt"/>
             <!--<user-service>-->
             <!--<user name="admin" password="admin" authorities="ROLE_ADMIN"/>-->
             <!--<user name="user" password="user" authorities="ROLE_USER"/>-->
@@ -43,6 +44,10 @@
         <beans:property name="dataSource" ref="dataSource"/>
         <beans:property name="enableGroups" value="true"/>
         <beans:property name="enableAuthorities" value="false"/>
+    </beans:bean>
+
+    <beans:bean id="bcrypt" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <beans:constructor-arg name="strength" value="11"/>
     </beans:bean>
 
 </beans:beans>
