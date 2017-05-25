@@ -8,6 +8,7 @@ import org.springframework.security.access.annotation.Secured;
  */
 public interface ProcessInterface {
 
+    @SuppressWarnings("SameReturnValue")
     @Secured("ROLE_USER")
     String getMessage();
 
