@@ -1,16 +1,12 @@
 CREATE DATABASE  IF NOT EXISTS `springsecurity` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `springsecurity`;
 
-
 DROP TABLE IF EXISTS `group_authorities`;
 DROP TABLE IF EXISTS `group_members`;
 DROP TABLE IF EXISTS `groups`;
 DROP TABLE IF EXISTS `persistent_logins`;
 DROP TABLE IF EXISTS `authorities`;
 DROP TABLE IF EXISTS `users`;
-
-
-
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -133,4 +129,3 @@ LOCK TABLES `users` WRITE;
 INSERT INTO `users` VALUES ('admin','admin',1),('user','user',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

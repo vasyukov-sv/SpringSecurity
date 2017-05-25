@@ -15,6 +15,7 @@
 <p>
     User page !
 </p>
+<h2>Custom message:${message}</h2>
 <br>
 <a href="<c:url value="/logout"/>">Logout</a>
 </body>
